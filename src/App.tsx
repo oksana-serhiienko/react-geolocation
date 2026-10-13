@@ -1,25 +1,39 @@
 import { useState } from "react";
+import "./index.css";
+
+type Position = {
+  lat: number;
+  lng: number;
+};
 
 function useGeolocation() {
   const [isLoading, setIsLoading] = useState(false);
-  const [position, setPosition] = useState({});
-  const [error, setError] = useState(null);
+
+  const [position, setPosition] = useState<Position | null>(null);
+
+  const [error, setError] = useState<string | null>(null);
 
   function getPosition() {
-    if (!navigator.geolocation)
-      return setError("Your browser does not support geolocation");
+    setError(null);
+
+    if (!navigator.geolocation) {
+      setError("Your browser does not support geolocation");
+      return;
+    }
 
     setIsLoading(true);
+
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setPosition({
           lat: pos.coords.latitude,
           lng: pos.coords.longitude,
         });
+
         setIsLoading(false);
       },
-      (error) => {
-        setError(error.message);
+      (err) => {
+        setError(err.message);
         setIsLoading(false);
       },
     );
@@ -29,12 +43,7 @@ function useGeolocation() {
 }
 
 export default function App() {
-  const {
-    isLoading,
-    position: { lat, lng },
-    error,
-    getPosition,
-  } = useGeolocation();
+  const { isLoading, position, error, getPosition } = useGeolocation();
 
   const [countClicks, setCountClicks] = useState(0);
 
@@ -62,16 +71,16 @@ export default function App() {
 
       {error && <p className="error">{error}</p>}
 
-      {!isLoading && !error && lat != null && lng != null && (
+      {!isLoading && !error && position && (
         <div className="position">
           <p className="position-title">Your GPS position</p>
 
           <a
             target="_blank"
             rel="noreferrer"
-            href={`https://www.openstreetmap.org/#map=16/${lat}/${lng}`}
+            href={`https://www.openstreetmap.org/#map=16/${position.lat}/${position.lng}`}
           >
-            {lat.toFixed(5)}, {lng.toFixed(5)}
+            {position.lat.toFixed(5)}, {position.lng.toFixed(5)}
           </a>
         </div>
       )}
