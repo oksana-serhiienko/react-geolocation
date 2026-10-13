@@ -1,0 +1,187 @@
+```css
+/* Сброс базовых стилей */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, Arial, sans-serif;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, #30245c 0%, transparent 40%),
+    linear-gradient(135deg, #10101c, #19152c 60%, #111827);
+  color: #f4f1ff;
+}
+
+/* Основной контейнер */
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+/* Карточка приложения */
+.app {
+  width: 100%;
+  max-width: 520px;
+  padding: 44px 36px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+}
+
+/* Иконка */
+.app-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35);
+}
+
+/* Заголовок */
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+
+/* Описание */
+.description {
+  color: #b9b4d0;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+/* Основная кнопка */
+button {
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(124, 58, 237, 0.35);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Загрузка */
+.loading {
+  margin-top: 24px;
+  color: #c4b5fd;
+  font-size: 14px;
+}
+
+/* Сообщение об ошибке */
+.error {
+  margin-top: 24px;
+  padding: 14px;
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  border-radius: 12px;
+  background: rgba(248, 113, 113, 0.08);
+  color: #fca5a5;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* Блок с координатами */
+.position {
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(167, 139, 250, 0.08);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 16px;
+}
+
+.position-title {
+  margin-bottom: 12px;
+  color: #b9b4d0;
+  font-size: 13px;
+}
+
+.position a {
+  color: #c4b5fd;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.8;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.position a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Счётчик нажатий */
+.clicks {
+  margin-top: 28px;
+  color: #928ba9;
+  font-size: 13px;
+}
+
+.clicks span {
+  color: #c4b5fd;
+  font-weight: 700;
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 560px) {
+  #root {
+    padding: 16px;
+  }
+
+  .app {
+    padding: 32px 22px;
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .app-icon {
+    width: 66px;
+    height: 66px;
+    font-size: 30px;
+  }
+}
+```
